@@ -13,21 +13,11 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Dashboard</h1>
-        <form action="{{ route('player.store') }}">
-            <button class="btn btn-secondary position-absolute top-10 start-15 mb-2 ml-2" style="box-shadow: 0px 0px 10px #888888;padding: 10px; width: 150px; position: absolute;top: 70px;left: 15px;">
-                Player
-            </button>
-        </form>
-
-        <form action="{{ route('team.store') }}">
-            <button class="btn btn-secondary position-absolute top-10 start-15 mb-2 ml-2" style="box-shadow: 0px 0px 10px #888888; padding: 10px;width: 150px;position: absolute;top: 70px;left: 180px;">
-                Team
-            </button>
-        </form>
+        <a href="{{route('teamForm.show')}}" class="btn btn-primary px-3">Add Team</a>
+        <a href="{{route('ajax')}}" class="btn btn-primary px-3">Player Info</a>
     </div>
     @csrf
 </div>
-
 
 </body>
 </html>

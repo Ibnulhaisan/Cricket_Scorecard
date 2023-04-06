@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
-
+use Yajra\DataTables\Facades\DataTables;
 class PlayerController extends Controller
 {
 
@@ -29,5 +29,22 @@ class PlayerController extends Controller
          return "save";
 
      }
+
+    public function ajax(Request $request)
+    {
+        if ($request->ajax()) {
+            $u = Player::query();
+
+            return DataTables::of($u)
+                ->addColumn('action', function ($admin) {
+                    return '<a class="btn btn-danger">Delete</a>';
+                })
+                ->rawColumns(["action"])
+                ->make(true);
+
+        }
+        return view('datatable');
+    }
+
 }
 
