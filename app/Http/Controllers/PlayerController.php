@@ -30,6 +30,7 @@ class PlayerController extends Controller
 
      }
 
+
     public function ajax(Request $request)
     {
         if ($request->ajax()) {

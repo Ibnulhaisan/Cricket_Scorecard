@@ -13,11 +13,17 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Dashboard</h1>
+        <a href="{{route('logout')}}" class="btn btn-primary px-3">Logout</a>
         <a href="{{route('teamForm.show')}}" class="btn btn-primary px-3">Add Team</a>
         <a href="{{route('ajax')}}" class="btn btn-primary px-3">Player Info</a>
     </div>
     @csrf
 </div>
+{{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--   onclick="event.preventDefault();--}}
+{{--   document.getElementById('logout-form').submit();">--}}
+{{--    {{ __('Logout') }}--}}
+{{--</a>--}}
 
 </body>
 </html>

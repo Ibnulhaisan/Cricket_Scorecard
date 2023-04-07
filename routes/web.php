@@ -31,7 +31,11 @@ Route::post('infosave',[\App\Http\Controllers\PlayerController::class,'playerinf
 Route::get('infoshow',[\App\Http\Controllers\TeamController::class,'team'])->name('teamForm.show');
 Route::post('teamsave',[\App\Http\Controllers\TeamController::class,'teamInformation'])->name('team.store');
 
-//Dashboard ar route
+//Dashboard ar logout ar route
 Route::get('dashboard',[\App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('logout',[\App\Http\Controllers\DashboardController::class,'logout'])->name('logout');
 
 Route::get('showdata',[\App\Http\Controllers\PlayerController::class,'ajax'])->name('ajax');
+
+Route::get('match',[\App\Http\Controllers\MatchController::class,'matchId'])->name('match');
+Route::post('matchsave',[\App\Http\Controllers\MatchController::class,'matchInformation'])->name('match.store');
