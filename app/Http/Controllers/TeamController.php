@@ -21,4 +21,7 @@ class TeamController extends Controller
         $team->save();
 
     }
+    public function back(){
+        return view('dashboard');
+    }
 }

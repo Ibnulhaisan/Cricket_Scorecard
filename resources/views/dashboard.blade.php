@@ -11,19 +11,21 @@
 <body>
 
 <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Dashboard</h1>
-        <a href="{{route('logout')}}" class="btn btn-primary px-3">Logout</a>
-        <a href="{{route('teamForm.show')}}" class="btn btn-primary px-3">Add Team</a>
-        <a href="{{route('ajax')}}" class="btn btn-primary px-3">Player Info</a>
+    <div class="d-flex justify-content-end align-items-center mb-4">
+        <a href="{{route('logout')}}" class="btn btn-dark-light px-3" style="background-color: #4682b4; color: #FFFFFF; border: 10px solid #000000; border-top-width: 10px;">Logout</a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="d-flex justify-content-start align-items-center mb-4">
+        <a href="{{route('teamForm.show')}}" class="btn btn-success px-3">Add Team</a>
+        <a href="{{route('ajax')}}" class="btn btn-success px-3">Player Info</a>
+        <a href="{{route('match')}}" class="btn btn-success px-3">Match</a>
     </div>
     @csrf
 </div>
-{{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
-{{--   onclick="event.preventDefault();--}}
-{{--   document.getElementById('logout-form').submit();">--}}
-{{--    {{ __('Logout') }}--}}
-{{--</a>--}}
+
 
 </body>
 </html>

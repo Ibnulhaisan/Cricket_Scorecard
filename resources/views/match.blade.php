@@ -53,7 +53,10 @@
                         <input type="text" name="venue" id="venue" class="form-control" >
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button><br>
+                    </div><br>
+                    <div class="text-center">
+                        <a href="{{route('back')}}" class="btn btn-danger px-3">GoBack</a>
                     </div>
                 </form>
             </div>

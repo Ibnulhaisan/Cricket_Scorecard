@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('showdata',[\App\Http\Controllers\PlayerController::class,'ajax'])->name('ajax');
 //player ar route
 Route::get('showplayerinfo',[\App\Http\Controllers\PlayerController::class,'teamId'])->name('playerForm.show');
 Route::post('infosave',[\App\Http\Controllers\PlayerController::class,'playerinformation'])->name('player.store');
@@ -30,12 +31,19 @@ Route::post('infosave',[\App\Http\Controllers\PlayerController::class,'playerinf
 //Team ar route
 Route::get('infoshow',[\App\Http\Controllers\TeamController::class,'team'])->name('teamForm.show');
 Route::post('teamsave',[\App\Http\Controllers\TeamController::class,'teamInformation'])->name('team.store');
-
+Route::get('goback',[\App\Http\Controllers\TeamController::class,'back'])->name('back');
 //Dashboard ar logout ar route
-Route::get('dashboard',[\App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard');
+//Route::group(['middleware'=>'auth'],function ()>
+    Route::get('dashboard',[\App\Http\Controllers\DashboardController::class,'dashboard'])->name('dashboard')->middleware(['auth']);
+//});
+
 Route::get('logout',[\App\Http\Controllers\DashboardController::class,'logout'])->name('logout');
 
-Route::get('showdata',[\App\Http\Controllers\PlayerController::class,'ajax'])->name('ajax');
 
+
+//match ar sob route
 Route::get('match',[\App\Http\Controllers\MatchController::class,'matchId'])->name('match');
 Route::post('matchsave',[\App\Http\Controllers\MatchController::class,'matchInformation'])->name('match.store');
+Route::get('matchdatatable',[\App\Http\Controllers\MatchController::class,'matchdatatable'])->name('matchdatatable');
+Route::get('goback',[\App\Http\Controllers\MatchController::class,'back'])->name('back');
+Route::get('showlive/{id}',[\App\Http\Controllers\MatchController::class,'showlive'])->name('hello');
