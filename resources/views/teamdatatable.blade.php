@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="float-right">
-    <a href="{{ route('match') }}" class="btn btn-warning px-3 text-center">Go Back</a>
+    <a href="{{ route('teamForm.show') }}" class="btn btn-outline-success px-3 text-center">Back</a>
 </div>
 <div class="container my-5">
     <table id="dataTable" style="width:100%" >
@@ -26,10 +26,8 @@
         <tr >
             <th>Id</th>
             <th>Name</th>
-            <th>total_overs</th>
-            <th>team_x_id</th>
-            <th>team_y_id</th>
-            <th>venue</th>
+            <th>Captain</th>
+            <th>Coach</th>
             <th>Action</th>
 
         </tr>
@@ -44,17 +42,15 @@
         $('#dataTable').DataTable({
 
 
-            ajax: '{{ route('matchdatatable') }}',
+            ajax: '{{ route('teamdatatable') }}',
             scrollY: '65vh',
             processing: true,
             serverSide:true,
             columns: [
                 { data: 'id' },
-                { data: 'name'},
-                { data: 'total_overs' },
-                { data: 'team_x_id' },
-                { data: 'team_y_id' },
-                { data: 'venue' },
+                { data: 'team_name'},
+                { data: 'captain_name' },
+                { data: 'coach_name' },
                 { data: 'action' },
 
 
