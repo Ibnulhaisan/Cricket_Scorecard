@@ -17,10 +17,10 @@
     </style>
 </head>
 <body>
-<div class="float-right">
-    <a href="{{ route('teamForm.show') }}" class="btn btn-outline-success px-3 text-center">Back</a>
-</div>
-<div class="container my-5">
+@include('app')
+<div class="container">
+    <a class="btn btn-primary my-3" href="{{route('teamForm.show')}}">Add team</a>
+    <h3 class="text-center">All teams</h3>
     <table id="dataTable" style="width:100%" >
         <thead style="background-color: cornflowerblue">
         <tr >
@@ -28,8 +28,6 @@
             <th>Name</th>
             <th>Captain</th>
             <th>Coach</th>
-            <th>Action</th>
-
         </tr>
         </thead>
     </table>
@@ -51,9 +49,6 @@
                 { data: 'team_name'},
                 { data: 'captain_name' },
                 { data: 'coach_name' },
-                { data: 'action' },
-
-
             ],
         });
     });

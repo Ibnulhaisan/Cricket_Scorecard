@@ -10,21 +10,28 @@
 </head>
 <body>
 
+@include('app')
 <<div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="card p-4 shadow">
-                <h3 class="text-center mb-4">Match Information</h3>
+                <h3 class="text-center mb-4">Create new match </h3>
                 <form method="POST" action="{{ route('match.store') }}">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" class="form-control" >
                     </div>
+                    @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="form-group">
                         <label for="total_overs">Total Over:</label>
                         <input type="number" name="total_overs" id="total_overs" class="form-control" >
                     </div>
+                    @error('total_overs')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="form-group">
                         <label for="x_team_name">X Team Name:</label>
 
@@ -52,12 +59,13 @@
                         <label for="venue">Venue</label>
                         <input type="text" name="venue" id="venue" class="form-control" >
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button><br>
-                    </div><br>
-                    <div class="text-center">
-                        <a href="{{route('back')}}" class="btn btn-danger px-3">GoBack</a>
+                    @error('venue')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary w-100">Submit</button><br>
                     </div>
+
                 </form>
             </div>
         </div>

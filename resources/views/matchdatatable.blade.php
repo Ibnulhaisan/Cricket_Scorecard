@@ -17,20 +17,20 @@
     </style>
 </head>
 <body>
-<div class="float-right">
-    <a href="{{ route('match') }}" class="btn btn-warning px-3 text-center">Go Back</a>
-</div>
-<div class="container my-5">
+@include('app')
+<div class="container my-3">
+    <a class="btn btn-primary " href="{{route('match')}}">create match</a>
+    <h4 class="mb-4 text-center">All match</h4>
     <table id="dataTable" style="width:100%" >
         <thead style="background-color: cornflowerblue">
         <tr >
             <th>Id</th>
             <th>Name</th>
-            <th>total_overs</th>
-            <th>team_x_id</th>
-            <th>team_y_id</th>
-            <th>venue</th>
-            <th>Action</th>
+            <th>Total overs</th>
+            <th>Team X</th>
+            <th>Team Y</th>
+            <th>Venue</th>
+            <th>Actions</th>
 
         </tr>
         </thead>
@@ -50,12 +50,13 @@
             serverSide:true,
             columns: [
                 { data: 'id' },
-                { data: 'name'},
-                { data: 'total_overs' },
-                { data: 'team_x_id' },
-                { data: 'team_y_id' },
-                { data: 'venue' },
-                { data: 'action' },
+                {data: 'name', name: 'name'},
+                {data: 'total_overs', name: 'total_overs'},
+                {data: 'team_x_name', name: 'team_x_name'},
+                {data: 'team_y_name', name: 'team_y_name'},
+                {data: 'venue', name: 'venue'},
+                {data: 'actions', name: 'actions'},
+
 
 
             ],

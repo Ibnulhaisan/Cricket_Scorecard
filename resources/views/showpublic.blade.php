@@ -6,11 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-@include('app')
+
 <form class="container py-5" action="{{route('updateScore', ['matchId' => $matchId])}}" method="POST">
     @csrf
     @if(session('message'))
@@ -30,9 +28,6 @@
                             <h6>{{$player->player_name}}</h6>
                         </div>
                     @endforeach
-                    @error('batsman_id')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="col-md-6">
                     <input class="me-2" hidden type="number" name="bowlingTeam_id" value="{{$players->team_y->id}}">
@@ -44,9 +39,6 @@
                             <h6>{{$player->player_name}}</h6>
                         </div>
                     @endforeach
-                    @error('bowler_id')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
                 </div>
             </div>
         </div>
@@ -97,21 +89,21 @@
     </div>
 
     <div class="row my-5">
-       <div class="col-md-4">
-           <h4>score</h4>
-           <div class="col-md-12">
-           @foreach ($score as $s)
-                 <span class="col-md-2">{{$s->run}} </span>
-           @endforeach
-           </div>
-       </div>
-
         <div class="col-md-4">
-            <div>
-                @foreach($runsByBatsman as  $player)
-                    <h6>{{'BAN'}}, ({{$score->sum('run')+$score->sum('extra')}}{{ -$runsByBowler->sum('wicket') }})</h6>@break
+            <h4>score</h4>
+            <div class="col-md-12">
+                @foreach ($score as $s)
+                    <span class="col-md-2">{{$s->run}} </span>
                 @endforeach
             </div>
+        </div>
+
+
+
+        <div class="col-md-4">
+            @foreach($runsByBatsman as  $player)
+                <h6>{{'BAN'}}, ({{$score->sum('run')}}{{ -$runsByBowler->sum('wicket') }})(Over: {{$player['over']}}.{{$player['ballInOver']}}) </h6><br>@break
+            @endforeach
 
             <table class="table table-bordered">
                 <thead>
@@ -123,18 +115,21 @@
                 </thead>
                 <tbody>
                 @foreach($runsByBatsman as  $player)
-                <tr>
-                    <td>{{$player['name']}}</td>
-                    <td>{{$player['runs']}}</td>
-                    <td>{{$player['ball']}}</td>
+                    <tr>
+                        <td>{{$player['name']}} </td>
+                        <td> {{$player['runs']}}</td>
+                        <td>  {{$player['ball']}}</td>
 
-                </tr>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
 
         <div class="col-md-4">
+            @foreach($runsByBatsman as  $player)
+                <h6>{{'BAN'}}, ({{$score->sum('run')}}{{ -$runsByBowler->sum('wicket') }})(Over: {{$player['over']}}.{{$player['ballInOver']}}) </h6><br>@break
+            @endforeach
 
             <table class="table table-bordered">
                 <thead>
@@ -150,11 +145,21 @@
                         <td>{{$player['name']}} </td>
                         <td> {{$player['runs']}}</td>
                         <td> {{$player['ball']}}</td>
+
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
+
+
+
+        {{--        <div class="col-md-4">--}}
+        {{--            <h4>Bowling summary</h4>--}}
+        {{--            @foreach($runsByBowler as $player)--}}
+        {{--                <h6>{{$player['name']}}, run: {{$player['runs']}} (Ball: {{$player['ball']}})</h6>--}}
+        {{--            @endforeach--}}
+        {{--        </div>--}}
 
         <div class="row my-5">
             <div class="col-md-4">
@@ -165,6 +170,7 @@
                     @endforeach
                 </div>
             </div>
+
             <div class="col-md-4">
                 <table class="table table-bordered">
                     <thead>
@@ -183,19 +189,25 @@
             </div>
         </div>
 
-            <div class="col-md-4">
-                <h4>score</h4>
-                <div class="col-md-12">
-                    @foreach ($score as $s)
-                        <span class="col-md-2">{{$s->wicket}}</span>
-                    @endforeach
-                </div>
+        <div class="col-md-4">
+            <h4>score</h4>
+            <div class="col-md-12">
+                @foreach ($score as $s)
+                    <span class="col-md-2">{{$s->wicket}}</span>
+                @endforeach
             </div>
+        </div>
         <div class="col-md-4">
             @foreach($runsByBatsman as $player)
                 <h6>wicket: <span style="color:{{$player['wicket'] == 1 ? 'red' : 'green'}};">{{$player['wicket'] == 1 ? 'out' : 'not out'}}</span>, ({{$player['name']}})</h6>
             @endforeach
         </div>
+
+
+        <table>
+
+        </table>
+
 
     </div>
 

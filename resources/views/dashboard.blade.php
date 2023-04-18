@@ -10,18 +10,12 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="d-flex justify-content-end align-items-center mb-4">
-        <a href="{{route('logout')}}" class="btn btn-dark-light px-3" style="background-color: #4682b4; color: #FFFFFF; border: 10px solid #000000; border-top-width: 10px;">Logout</a>
-    </div>
-</div>
-
-
-<div class="container">
+@include('app')
+<div class="container my-5">
     <div class="d-flex justify-content-start align-items-center mb-4">
-        <a href="{{route('teamForm.show')}}" class="btn btn-success px-3">Add Team</a>
-        <a href="{{route('ajax')}}" class="btn btn-success px-3">Player Info</a>
-        <a href="{{route('match')}}" class="btn btn-success px-3">Match</a>
+        <a href="{{route('teamdatatable')}}" class="btn btn-success px-5 py-4">Teams</a>
+        <a href="{{route('playerdata')}}" class="btn btn-success px-5 py-4 mx-4">Players</a>
+        <a href="{{route('match')}}" class="btn btn-success px-5 py-4">Matches</a>
     </div>
     @csrf
 </div>

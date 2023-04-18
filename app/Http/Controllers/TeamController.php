@@ -16,6 +16,12 @@ class TeamController extends Controller
 
     public function teamInformation(Request $request){
 
+        $request->validate([
+            'team_name' => 'required',
+            'captain_name' => 'required',
+            'coach_name' => 'required',
+        ]);
+
         $team = new Team();
         $team->team_name=$request->input('team_name');
         $team->captain_name=$request->input('captain_name');
@@ -34,10 +40,10 @@ class TeamController extends Controller
             $u = Team::query();
 
             return DataTables::of($u)
-                ->addColumn('action', function ($admin) {
-                    return '<a class="btn btn-danger">Delete</a>';
-                })
-                ->rawColumns(["action"])
+//                ->addColumn('action', function ($admin) {
+//                    return '<a class="btn btn-danger">Delete</a>';
+//                })
+//                ->rawColumns(["action"])
                 ->make(true);
 
         }
