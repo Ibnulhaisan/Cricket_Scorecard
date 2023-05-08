@@ -40,7 +40,7 @@ class ScoreController extends Controller
         $wicket = CricketScore::where('match_id', $matchId)->sum('wicket');
         $outPlayers = CricketScore::where('match_id', $matchId)->where('wicket', '!=', null)->pluck('batsman_id')->toArray();
         if ($wicket !== null && in_array($batsmanId, $outPlayers)) {
-            $message = 'The player is out ago';
+            $message = 'The player is already out';
             return redirect()->route('live.match', ['matchId' => $matchId])->withMessage($message);
         }
 

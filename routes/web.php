@@ -52,6 +52,8 @@ Route::post('scoreshow',[\App\Http\Controllers\ScoreController::class,'scoreinfo
 //Route::get('updateScore',[\App\Http\Controllers\ScoreController::class,'updateScore'])->name('updateScore',['id'=>$matchId]);
 Route::post('updateScore/{matchId}', [\App\Http\Controllers\ScoreController::class, 'updateScore'])->name('updateScore');
 
+Route::delete('playerdata/delete/{id}', 'PlayerController@deletePlayer')->name('deletePlayer');
+
 Route::get('app', function () {
     return view('app');
 });
